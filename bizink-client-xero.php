@@ -31,7 +31,7 @@ add_filter( 'cx-settings-fields', 'xero_settings_fields', 10, 2 );
 function xero_content( $types ) {
 	$types[] = [
 		'key' 	=> 'xero_content_page',
-		'type'	=> 'xero-content'
+		'type'	=> 'xero-resources'
 	];
 
 	return $types;
