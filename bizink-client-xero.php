@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name: Bizink Client Xero
- * Description: Bizink Client Xero by Bizink
+ * Plugin Name: BizPress Xero Resources
+ * Description: Show Xero resources on your site. Automatically updated by the Bizink team.
  * Plugin URI: https://bizinkonline.com
  * Author: Bizink
  * Author URI: https://bizinkonline.com
