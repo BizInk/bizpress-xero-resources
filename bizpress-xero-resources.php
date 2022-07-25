@@ -10,6 +10,21 @@
  * Domain Path: /languages
  */
 
+/**
+ * if accessed directly, exit.
+ */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+// Plugin Updater
+require 'plugin-update-checker/plugin-update-checker.php';
+$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker('https://github.com/BizInk/bizpress-xero-resources',__FILE__,'bizpress-xero-resources');
+// Set the branch that contains the stable release.
+$myUpdateChecker->setBranch('master');
+// Using a private repository, specify the access token 
+$myUpdateChecker->setAuthentication('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');
+
 function xero_settings_fields( $fields, $section ) {
 
 	if ( 'bizink-client_basic' != $section['id'] ) return $fields;
