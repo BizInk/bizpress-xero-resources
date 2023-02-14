@@ -19,7 +19,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Plugin Updater
 require 'plugin-update-checker/plugin-update-checker.php';
-$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker('https://github.com/BizInk/bizpress-xero-resources',__FILE__,'bizpress-xero-resources');
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+$myUpdateChecker = PucFactory::buildUpdateChecker('https://github.com/BizInk/bizpress-xero-resources',__FILE__,'bizpress-xero-resources');
 // Set the branch that contains the stable release.
 $myUpdateChecker->setBranch('master');
 // Using a private repository, specify the access token 
