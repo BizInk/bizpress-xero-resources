@@ -6,6 +6,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+add_filter( 'display_post_states', 'bizpress_xero_post_states', 10, 2 );
+function bizpress_xero_post_states( $post_states, $post ) {
+	$xeroPageID = cxbc_get_option( 'bizink-client_basic', 'xero_content_page' );
+    if ( $xeroPageID === $post->ID ) {
+        $post_states['bizpress_xero'] = __('BizPress Xero Resources','bizink-client');
+    }
+    return $post_states;
+}
+
 function xero_settings_fields( $fields, $section ) {
 	
 	if('bizink-client_basic' == $section['id']){
@@ -23,7 +32,7 @@ function xero_settings_fields( $fields, $section ) {
 	if('bizink-client_content' == $section['id']){
 		$fields['xero_label'] = array(
 			'id' => 'xero',
-	        'label'	=> __( 'Bizpress Xero Resources', 'bizink-client' ),
+	        'label'	=> __( 'BizPress Xero Resources', 'bizink-client' ),
 	        'type' => 'divider'
 		);
 		$fields['xero_title'] = array(
