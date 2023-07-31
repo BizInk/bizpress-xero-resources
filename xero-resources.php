@@ -16,16 +16,28 @@ function bizpress_xero_post_states( $post_states, $post ) {
 }
 
 function xero_settings_fields( $fields, $section ) {
-	
+	$pageselect = false;
+	if(defined('CXBPC')){
+		$bizpress = get_plugin_data( CXBPC );
+		$v = intval(str_replace('.','',$bizpress['Version']));
+		if($v >= 151){
+			$pageselect = true;
+		}
+	}
 	if('bizink-client_basic' == $section['id']){
 		$fields['xero_content_page'] = array(
 			'id'      => 'xero_content_page',
 			'label'     => __( 'Xero Resources', 'bizink-client' ),
-			'type'      => 'select',
+			'type'      => $pageselect ? 'pageselect':'select',
 			'desc'      => __( 'Select the page to show the content. This page must contain the <code>[bizpress-content]</code> shortcode.', 'bizink-client' ),
 			'options'	=> cxbc_get_posts( [ 'post_type' => 'page' ] ),
-			// 'chosen'	=> true,
 			'required'	=> false,
+			'default_page' => [
+				'post_title' => 'Xero Resources',
+				'post_content' => '[bizpress-content]',
+				'post_status' => 'publish',
+				'post_type' => 'page'
+			]
 		);
 	}
 	
