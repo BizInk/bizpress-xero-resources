@@ -47,7 +47,7 @@ function xero_settings_fields( $fields, $section ) {
 	if('bizink-client_content' == $section['id']){
 		$fields['xero_label'] = array(
 			'id' => 'xero',
-	        'label'	=> __( 'BizPress Xero Resources', 'bizink-client' ),
+	        'label'	=> __( 'Xero Resources', 'bizink-client' ),
 	        'type' => 'divider'
 		);
 		$fields['xero_title'] = array(
@@ -173,3 +173,17 @@ function bizpress_xero_sitemap_custom_items( $sitemap_custom_items ) {
 }
 
 add_filter( 'wpseo_sitemap_index', 'bizpress_xero_sitemap_custom_items' );
+
+function bizpress_xero_content_manager_fields($fields){
+	$data = null;
+	if(function_exists('bizink_get_content')){
+		$data = bizink_get_content( 'xero-content', 'topics' );
+	}
+	$fields['xero'] = array(
+		'id' => 'xero',
+		'label'	=> __( 'Xero Resources', 'bizink-client' ),
+		'posts' => $data ? $data->posts : array(),
+	);
+	return $fields;
+}
+add_filter('bizpress_content_manager_fields','bizpress_xero_content_manager_fields');
