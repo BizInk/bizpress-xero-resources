@@ -16,6 +16,7 @@ Display business content on your website that is automatically updated by the Bi
 
 = 1.3.5 =
 * Fix for XML Sitemaps
+* Adding Icons
 
 = 1.3.4 =
 * Content Manager Update
